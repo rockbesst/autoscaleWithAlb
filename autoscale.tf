@@ -4,7 +4,6 @@ resource "aws_launch_configuration" "as_conf" {
     instance_type = var.instance_type
     user_data = file("ready_webserver.sh")
     key_name = var.ssh_key
-    tags = merge(var.tags, {Name = "as_test"})
 }
 
 resource "aws_autoscaling_group" "as" {
