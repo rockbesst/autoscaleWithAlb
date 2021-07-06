@@ -20,7 +20,7 @@ resource "aws_autoscaling_group" "as" {
 
 resource "aws_autoscaling_attachment" "asg_attachment_alb" {
   autoscaling_group_name = aws_autoscaling_group.as.id
-  elb                    = aws_elb.MainLoadBalancer.id
+  elb                    = aws_lb.MainLoadBalancer.id
 }
 
 resource "aws_autoscaling_attachment" "asg_attachment_tg" {
