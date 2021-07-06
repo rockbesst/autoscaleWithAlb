@@ -27,18 +27,6 @@ resource "aws_lb" "MainLoadBalancer" {
    	protocol = "HTTP"
    	vpc_id   = data.aws_vpc.mainVPC.id
  }
- resource "aws_lb_target_group_attachment" "attach1_to_tg_main" {
- 	target_group_arn = aws_lb_target_group.tg_main.arn
-  	target_id        = aws_instance.WebServer1.id
-   	port             = 80
-  
- }
- resource "aws_lb_target_group_attachment" "attach2_to_tg_main" {
- 	target_group_arn = aws_lb_target_group.tg_main.arn
-  	target_id        = aws_instance.WebServer2.id
-   	port             = 80  
- }
-
  # Subnets
  data "aws_subnet" "sub1"{
 	 id = "subnet-0c95ec66"
