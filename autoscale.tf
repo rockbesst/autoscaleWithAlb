@@ -18,11 +18,6 @@ resource "aws_autoscaling_group" "as" {
   vpc_zone_identifier       = [data.aws_subnet.sub1.id, data.aws_subnet.sub2.id]
 }
 
-resource "aws_autoscaling_attachment" "asg_attachment_alb" {
-  autoscaling_group_name = aws_autoscaling_group.as.id
-  elb                    = aws_lb.MainLoadBalancer.id
-}
-
 resource "aws_autoscaling_attachment" "asg_attachment_tg" {
   autoscaling_group_name = aws_autoscaling_group.as.id
   alb_target_group_arn   = aws_lb_target_group.tg_main.arn
