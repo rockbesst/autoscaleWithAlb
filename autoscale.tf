@@ -13,7 +13,7 @@ resource "aws_autoscaling_group" "as" {
   health_check_grace_period = 60
   health_check_type         = "EC2"
   desired_capacity          = 2
-  protect_from_scale_in     = true
+  #protect_from_scale_in     = true
   launch_configuration      = aws_launch_configuration.as_conf.name
   vpc_zone_identifier       = [data.aws_subnet.sub1.id, data.aws_subnet.sub2.id]
   target_group_arns = [aws_lb_target_group.tg_main.arn]
