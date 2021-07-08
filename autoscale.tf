@@ -12,7 +12,7 @@ resource "aws_autoscaling_group" "as" {
   min_size                  = 1
   health_check_grace_period = 60
   health_check_type         = "EC2"
-  desired_capacity          = 1
+  desired_capacity          = 2
   protect_from_scale_in     = true
   launch_configuration      = aws_launch_configuration.as_conf.name
   vpc_zone_identifier       = [data.aws_subnet.sub1.id, data.aws_subnet.sub2.id]
@@ -22,8 +22,6 @@ resource "aws_autoscaling_group" "as" {
 resource "aws_autoscaling_policy" "as_policy" {
     name = "scale_policy"
     policy_type = "TargetTrackingScaling"
-    scaling_adjustment = 1
-    adjustment_type = "ChangeInCapacity"
     autoscaling_group_name = aws_autoscaling_group.as.name
     target_tracking_configuration {
         predefined_metric_specification {
